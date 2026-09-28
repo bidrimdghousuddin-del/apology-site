@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Registration Site</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        /* =================================
+           FIRST PAGE - REGISTRATION
+        ================================= */
+
+        #registrationPage {
+            width: 100%;
+            height: 100vh;
+
+            background-image: url("https://img.magnific.com/free-photo/office-desk-workspace-bright-color-yellow-background_169016-38713.jpg");
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            position: relative;
+        }
+
+        .registration {
+            position: absolute;
+
+            left: 10%;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            width: 320px;
+        }
+
+        .registration h1 {
+            color: green;
+
+            font-size: 32px;
+
+            margin: 0 0 25px 0;
+
+            text-align: left;
+        }
+
+        .registration input {
+            width: 100%;
+            height: 50px;
+
+            padding: 12px 15px;
+            margin-bottom: 15px;
+
+            background: white;
+            color: black;
+
+            border: none;
+            border-radius: 6px;
+
+            font-size: 16px;
+            outline: none;
+        }
+
+        .registration input::placeholder {
+            color: #555;
+            opacity: 1;
+        }
+
+        .registration button {
+            width: 100%;
+            height: 50px;
+
+            border: none;
+            border-radius: 6px;
+
+            background: #1769aa;
+            color: white;
+
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        .registration button:hover {
+            background: #0d4f82;
+        }
+
+        /* =================================
+           SECOND PAGE - APOLOGY
+        ================================= */
+
+        #successPage {
+            display: none;
+
+            width: 100%;
+            height: 100vh;
+
+            background: linear-gradient(
+                135deg,
+                #ff758c,
+                #ff7eb3,
+                #a18cd1,
+                #fbc2eb
+            );
+
+            background-size: 400% 400%;
+
+            animation: backgroundMove 8s ease infinite;
+
+            position: relative;
+
+            overflow: hidden;
+
+            color: white;
+        }
+
+        /* Moving background */
+
+        @keyframes backgroundMove {
+
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+
+        }
+
+        /* Apology content */
+
+        .successContent {
+            position: absolute;
+
+            left: 50%;
+            top: 50%;
+
+            transform: translate(-50%, -50%);
+
+            width: 90%;
+            max-width: 700px;
+
+            text-align: center;
+
+            z-index: 10;
+
+            animation: contentAppear 1.5s ease;
+        }
+
+        @keyframes contentAppear {
+
+            0% {
+                opacity: 0;
+
+                transform: translate(-50%, -40%) scale(0.7);
+            }
+
+            100% {
+                opacity: 1;
+
+                transform: translate(-50%, -50%) scale(1);
+            }
+
+        }
+
+        /* Heart */
+
+        .heart {
+            font-size: 70px;
+
+            animation: heartbeat 1.2s infinite;
+
+            margin-bottom: 5px;
+        }
+
+        @keyframes heartbeat {
+
+            0% {
+                transform: scale(1);
+            }
+
+            25% {
+                transform: scale(1.15);
+            }
+
+            40% {
+                transform: scale(1);
+            }
+
+            60% {
+                transform: scale(1.15);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+
+        }
+
+        /* Sorry heading */
+
+        .successContent h1 {
+            font-size: 55px;
+
+            margin: 5px 0 15px 0;
+
+            color: white;
+
+            text-shadow:
+                3px 3px 0 #d63384,
+                5px 5px 15px rgba(0, 0, 0, 0.35);
+
+            animation: sorryText 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes sorryText {
+
+            from {
+                transform: translateY(0);
+            }
+
+            to {
+                transform: translateY(-8px);
+            }
+
+        }
+
+        /* Main sorry message */
+
+        .sorryMessage {
+            font-size: 26px;
+
+            font-weight: bold;
+
+            line-height: 1.6;
+
+            margin: 10px auto;
+
+            color: #ffffff;
+
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Heart message */
+
+        .heartMessage {
+            font-size: 21px;
+
+            line-height: 1.8;
+
+            margin-top: 15px;
+
+            font-weight: bold;
+
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.35);
+        }
+
+        /* Individual line colours */
+
+        .line1 {
+            color: #ffffff;
+
+            animation: lineGlow 2s infinite alternate;
+        }
+
+        .line2 {
+            color: #fff700;
+
+            animation: lineGlow 2s infinite alternate;
+        }
+
+        .line3 {
+            color: #00ffea;
+
+            animation: lineGlow 2s infinite alternate;
+        }
+
+        .line4 {
+            color: #ffffff;
+
+            font-size: 24px;
+
+            animation: lineGlow 2s infinite alternate;
+        }
+
+        .line5 {
+            color: #ff0055;
+
+            font-size: 29px;
+
+            font-weight: bold;
+
+            animation: pleaseAnimation 1s infinite alternate;
+        }
+
+        @keyframes lineGlow {
+
+            from {
+                text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            }
+
+            to {
+                text-shadow:
+                    0 0 10px white,
+                    2px 2px 5px rgba(0, 0, 0, 0.3);
+            }
+
+        }
+
+        @keyframes pleaseAnimation {
+
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(1.08);
+            }
+
+        }
+
+        /* Back button */
+
+        .successContent button {
+            margin-top: 25px;
+
+            padding: 13px 35px;
+
+            border: none;
+            border-radius: 30px;
+
+            background: white;
+
+            color: #d63384;
+
+            font-size: 17px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+
+            transition: 0.3s;
+        }
+
+        .successContent button:hover {
+            transform: scale(1.08);
+
+            background: #fff0f6;
+        }
+
+        /* =================================
+           FLOATING HEARTS AND EMOJIS
+        ================================= */
+
+        .floatingHeart {
+            position: absolute;
+
+            bottom: -50px;
+
+            font-size: 30px;
+
+            animation: floatHeart 6s linear infinite;
+
+            opacity: 0.8;
+        }
+
+        @keyframes floatHeart {
+
+            0% {
+                transform: translateY(0) rotate(0deg);
+
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-110vh) rotate(360deg);
+
+                opacity: 0;
+            }
+
+        }
+
+        .heart1 {
+            left: 10%;
+
+            animation-delay: 0s;
+        }
+
+        .heart2 {
+            left: 25%;
+
+            animation-delay: 2s;
+        }
+
+        .heart3 {
+            left: 45%;
+
+            animation-delay: 1s;
+        }
+
+        .heart4 {
+            left: 70%;
+
+            animation-delay: 3s;
+        }
+
+        .heart5 {
+            left: 88%;
+
+            animation-delay: 1.5s;
+        }
+
+        /* =================================
+           PARTY CONFETTI
+        ================================= */
+
+        .confetti {
+            position: absolute;
+
+            top: -30px;
+
+            width: 12px;
+            height: 20px;
+
+            animation: confettiFall 4s linear infinite;
+
+            z-index: 5;
+        }
+
+        @keyframes confettiFall {
+
+            0% {
+                transform:
+                    translateY(-50px)
+                    rotate(0deg);
+
+                opacity: 1;
+            }
+
+            100% {
+                transform:
+                    translateY(110vh)
+                    rotate(720deg);
+
+                opacity: 0;
+            }
+
+        }
+
+        .c1 {
+            left: 5%;
+
+            background: #fff;
+
+            animation-delay: 0s;
+        }
+
+        .c2 {
+            left: 18%;
+
+            background: #ffd700;
+
+            animation-delay: 1s;
+        }
+
+        .c3 {
+            left: 35%;
+
+            background: #00ffcc;
+
+            animation-delay: 2s;
+        }
+
+        .c4 {
+            left: 55%;
+
+            background: #ffffff;
+
+            animation-delay: 0.5s;
+        }
+
+        .c5 {
+            left: 75%;
+
+            background: #ffd700;
+
+            animation-delay: 1.5s;
+        }
+
+        .c6 {
+            left: 92%;
+
+            background: #00ffcc;
+
+            animation-delay: 2.5s;
+        }
+
+        /* =================================
+           MOBILE SCREEN
+        ================================= */
+
+        @media (max-width: 600px) {
+
+            .registration {
+                left: 7%;
+
+                width: 86%;
+            }
+
+            .successContent {
+                width: 90%;
+            }
+
+            .successContent h1 {
+                font-size: 42px;
+            }
+
+            .sorryMessage {
+                font-size: 21px;
+            }
+
+            .heartMessage {
+                font-size: 17px;
+
+                line-height: 1.7;
+            }
+
+            .line4 {
+                font-size: 19px;
+            }
+
+            .line5 {
+                font-size: 23px;
+            }
+
+            .heart {
+                font-size: 55px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- =================================
+         FIRST PAGE
+    ================================= -->
+
+    <div id="registrationPage">
+
+        <div class="registration">
+
+            <h1>
+                Registration Site
+            </h1>
+
+            <form onsubmit="showSuccessPage(event)">
+
+                <input
+                    type="text"
+                    placeholder="Username"
+                    required
+                >
+
+                <input
+                    type="password"
+                    placeholder="Password"
+                    required
+                >
+
+                <button type="submit">
+                    Register
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- =================================
+         SECOND PAGE - APOLOGY
+    ================================= -->
+
+    <div id="successPage">
+
+        <!-- CONFETTI -->
+
+        <div class="confetti c1"></div>
+        <div class="confetti c2"></div>
+        <div class="confetti c3"></div>
+        <div class="confetti c4"></div>
+        <div class="confetti c5"></div>
+        <div class="confetti c6"></div>
+
+        <!-- FLOATING EMOJIS -->
+
+        <div class="floatingHeart heart1">😭</div>
+        <div class="floatingHeart heart2">🎉</div>
+        <div class="floatingHeart heart3">🎊</div>
+        <div class="floatingHeart heart4">🎀</div>
+        <div class="floatingHeart heart5">🎈</div>
+
+        <!-- APOLOGY CONTENT -->
+
+        <div class="successContent">
+
+            <div class="heart">
+                ❤️
+            </div>
+
+            <h1>
+                I'M REALLY SORRY
+            </h1>
+
+            <p class="sorryMessage">
+                Dil se sorry MAM ❤️
+            </p>
+
+            <p class="heartMessage">
+
+                <span class="line1">
+                    Agar hamari taraf se bura laga hunga to
+                </span>
+
+                <br>
+
+                <span class="line2">
+                    sach mein hamara irada aapko dukhi karne ka nahi tha.
+                </span>
+
+                <br><br>
+
+                <span class="line3">
+                    Hamne sirf fun ke liye banaya tha wo.
+                </span>
+
+                <br><br>
+
+                <span class="line4">
+                    Please mujhe maaf kar do. 🥺❤️
+                </span>
+
+                <br>
+
+                <span class="line5">
+                    Pleeeees 😭😭😭😭😭😭😭
+                </span>
+
+            </p>
+
+            <button onclick="goBack()">
+                Back
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- =================================
+         JAVASCRIPT
+    ================================= -->
+
+    <script>
+
+        /* Register button */
+
+        function showSuccessPage(event) {
+
+            event.preventDefault();
+
+            document.getElementById("registrationPage").style.display = "none";
+
+            document.getElementById("successPage").style.display = "block";
+
+        }
+
+        /* Back button */
+
+        function goBack() {
+
+            document.getElementById("successPage").style.display = "none";
+
+            document.getElementById("registrationPage").style.display = "block";
+
+        }
+
+    </script>
+
+</body>
+
+</html>
